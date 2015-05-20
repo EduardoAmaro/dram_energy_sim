@@ -1,8 +1,10 @@
 package dram_energy_sim.View;
 
 import dram_energy_sim.Controller.MainViewController;
+import dram_energy_sim.Model.Grafico;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class MainView extends javax.swing.JFrame {
@@ -140,7 +142,7 @@ public class MainView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void carregMemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carregMemActionPerformed
-        JFileChooser j = new JFileChooser();
+        JFileChooser j = new JFileChooser("C:\\Users\\Eduardo\\Dropbox\\BIC-IFRS\\Eduardo");
         int fileChooser = j.showOpenDialog(null);
         if (fileChooser == JFileChooser.APPROVE_OPTION) {
             DefaultListModel model = (DefaultListModel) this.listMem.getModel();
@@ -157,7 +159,7 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonExitActionPerformed
 
     private void carregApliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carregApliActionPerformed
-        JFileChooser j = new JFileChooser();
+        JFileChooser j = new JFileChooser("C:\\Users\\Eduardo\\Dropbox\\BIC-IFRS\\Eduardo");
         int fileChooser = j.showOpenDialog(null);
         if (fileChooser == JFileChooser.APPROVE_OPTION) {
             DefaultListModel model = (DefaultListModel) this.listApli.getModel();
@@ -176,7 +178,11 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonVisuApliActionPerformed
 
     private void runActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runActionPerformed
-        viewController.run();
+        JFileChooser j = new JFileChooser();
+        int fileChooser = j.showSaveDialog(null);
+        if (fileChooser == JFileChooser.APPROVE_OPTION) {
+            viewController.run(j.getSelectedFile());
+        }
     }//GEN-LAST:event_runActionPerformed
 
 

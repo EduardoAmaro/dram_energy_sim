@@ -1,8 +1,10 @@
 package dram_energy_sim.Model;
 
-public final class PowerEstimator {
+public final class PowerEstimator{
 
     public double PRE_PDN, PRE_STBY, ACT_PDN, ACT_STBY, ACT, WR, RD, DQ, REF;
+    public String memoria;
+    public String aplicacao;
 
     public PowerEstimator(Memoria memoria, Aplicacao aplicacao) {
         this.estimate(memoria, aplicacao);
@@ -10,6 +12,8 @@ public final class PowerEstimator {
 
     private void estimate(Memoria mem, Aplicacao apli) {
         double tACT = this._calcTACT(mem.BL, mem.tCK, apli.readPctg, apli.writePctg, apli.pageHitPctg);
+        this.memoria = mem.MODEL;
+        this.aplicacao = "Aplicação " + apli.id;
         this.PRE_PDN = this._calcPRE_PDN(mem.IDD2P, mem.VDD, apli.bnkPREPctg, apli.ckeLoPREPctg);
         this.PRE_STBY = this._calcPRE_STBY(mem.IDD2F, mem.VDD, apli.bnkPREPctg, apli.ckeLoPREPctg);
         this.ACT_PDN = this._calcACT_PDN(mem.IDD3P, mem.VDD, apli.bnkPREPctg, apli.ckeLoACTPctg);
@@ -72,6 +76,10 @@ public final class PowerEstimator {
         return P_REF;
     }
 
+    public String toString2(){
+        String saida = this.memoria + " X " + aplicacao;
+        return saida;
+    }
     public String toString() {
         String saida = PRE_PDN + ";" + PRE_STBY + ";" + ACT_PDN + ";" + ACT_STBY + ";" + ACT + ";" + WR + ";"
                 + RD + ";" + DQ + ";" + REF;

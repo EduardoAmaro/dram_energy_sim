@@ -5,6 +5,7 @@ import dram_energy_sim.Model.Memoria;
 import dram_energy_sim.Model.Relatorio;
 import dram_energy_sim.View.VisualizacaoAplicacao;
 import dram_energy_sim.View.VisualizacaoMemoria;
+import java.io.File;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -46,12 +47,13 @@ public class MainViewController {
         }
     }
 
-    public void run() {
+    public void run(File file) {
         if (memorias.isEmpty() || aplicacoes.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Para rodar é necessário que haja pelo menos uma aplicação e uma "
                     + "memória inseridas");
         } else {
-            Relatorio relatorio = new Relatorio(memorias, aplicacoes);
+            Relatorio relatorio = new Relatorio(memorias, aplicacoes,file);
+            ViewRelatorioController viewRelatorio = new ViewRelatorioController(relatorio.estimate);
         }
     }
 }
