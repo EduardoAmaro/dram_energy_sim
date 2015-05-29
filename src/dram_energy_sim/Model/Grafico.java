@@ -30,12 +30,24 @@ public class Grafico{
         DefaultCategoryDataset ds = new DefaultCategoryDataset();
         int i;
         for(i=0;i<relatorio.size();i++){
+            ds.addValue(relatorio.get(i).ACT, "ACT", relatorio.get(i).toString2());
+            ds.addValue(relatorio.get(i).ACT_PDN, "ACT_PDN", relatorio.get(i).toString2());
+            ds.addValue(relatorio.get(i).ACT_STBY, "ACT_STBY", relatorio.get(i).toString2());
+            ds.addValue(relatorio.get(i).DQ, "DQ", relatorio.get(i).toString2());
+            ds.addValue(relatorio.get(i).PRE_PDN, "PRE_PDN", relatorio.get(i).toString2());
+            ds.addValue(relatorio.get(i).PRE_STBY, "PRE_STBY", relatorio.get(i).toString2());
+            ds.addValue(relatorio.get(i).RD, "RD", relatorio.get(i).toString2());
+            ds.addValue(relatorio.get(i).REF, "REF", relatorio.get(i).toString2());
+            ds.addValue(relatorio.get(i).WR, "WR", relatorio.get(i).toString2());
+            
+            /*
             double total = relatorio.get(i).PRE_PDN + relatorio.get(i).PRE_STBY + relatorio.get(i).ACT_PDN + 
                 relatorio.get(i).ACT_STBY + relatorio.get(i).ACT + relatorio.get(i).WR + relatorio.get(i).RD + 
                 relatorio.get(i).DQ + relatorio.get(i).REF;
                 ds.addValue(total, "ptotal",relatorio.get(i).toString2() );
+            */
         }
-        grafico = ChartFactory.createBarChart3D("", "Application x Memory", "Power Consumption (mW)", ds, 
+        grafico = ChartFactory.createStackedBarChart3D("", "Application x Memory", "Power Consumption (mW)", ds, 
                 PlotOrientation.VERTICAL, true, true, false);
     }
     

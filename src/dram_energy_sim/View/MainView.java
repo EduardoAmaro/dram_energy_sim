@@ -1,10 +1,8 @@
 package dram_energy_sim.View;
 
 import dram_energy_sim.Controller.MainViewController;
-import dram_energy_sim.Model.Grafico;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class MainView extends javax.swing.JFrame {
